@@ -1,12 +1,26 @@
-function SensorTable({ sensors, togglePump, getStatusClass, getStatusLabel }) {
+import { Database } from "lucide-react";
+
+function SensorTable({ sensors, getStatusClass, getStatusLabel }) {
   return (
-    <section className="panel">
-      <div className="panel-title">
-        <h3>Data Sensor dan Kontrol Pompa</h3>
-        <span>Data berasal dari database Supabase</span>
+    <section className="sensor-table-section">
+      <div className="table-header-card">
+        <div className="table-title-area">
+          <div className="title-icon-box">
+            <Database size={24} />
+          </div>
+          <div>
+            <h3>Data Sensor Terkini</h3>
+            <span>Monitoring langsung dari database Supabase</span>
+          </div>
+        </div>
+        <div className="table-badges">
+          <span className="live-badge">
+            <span className="pulse-dot"></span> Live
+          </span>
+        </div>
       </div>
 
-      <div className="table-wrapper">
+      <div className="table-wrapper premium-table-wrapper">
         <table>
           <thead>
             <tr>
@@ -17,14 +31,13 @@ function SensorTable({ sensors, togglePump, getStatusClass, getStatusLabel }) {
               <th>Cahaya</th>
               <th>Pompa</th>
               <th>Status</th>
-              <th>Aksi</th>
             </tr>
           </thead>
 
           <tbody>
             {sensors.map((item) => (
               <tr key={item.id}>
-                <td>{item.area}</td>
+                <td><strong>{item.area}</strong></td>
                 <td>{item.temperature}°C</td>
                 <td>{item.soil_moisture}%</td>
                 <td>{item.humidity}%</td>
@@ -45,22 +58,14 @@ function SensorTable({ sensors, togglePump, getStatusClass, getStatusLabel }) {
                     {getStatusLabel(item)}
                   </span>
                 </td>
-
-                <td>
-                  <button
-                    className="pump-btn"
-                    onClick={() => togglePump(item.id, item.pump_status)}
-                  >
-                    {item.pump_status === "ON" ? "Matikan" : "Nyalakan"}
-                  </button>
-                </td>
               </tr>
             ))}
 
             {sensors.length === 0 && (
               <tr>
-                <td colSpan="8" style={{ textAlign: "center", padding: 24 }}>
-                  Data sensor belum tersedia.
+                <td colSpan="7" className="empty-state-td">
+                  <Database size={32} opacity={0.3} />
+                  <p>Data sensor belum tersedia.</p>
                 </td>
               </tr>
             )}

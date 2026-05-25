@@ -172,25 +172,76 @@ function DashboardPage({ sensors, summary, lastUpdate, fetchData, togglePump }) 
               ))}
             </div>
           )}
+        </div>
 
-          <div className="status-chart">
-            <ResponsiveContainer width="100%" height={210}>
+        <div className="status-chart premium-status-chart">
+          <div className="status-chart-left">
+            <div className="status-chart-head">
+              <div>
+                <h4>Distribusi Status Lahan</h4>
+                <p>Ringkasan kondisi seluruh petak</p>
+              </div>
+              <span>{sensors.length} Petak</span>
+            </div>
+
+            <div className="status-legend">
+              {statusData.map((item) => (
+                <div className={`legend-item ${item.name.toLowerCase()}`} key={item.name}>
+                  <span></span>
+                  <div>
+                    <strong>{item.value}</strong>
+                    <p>{item.name}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="pie-layout">
+            <ResponsiveContainer width="100%" height={260}>
               <PieChart>
+                <defs>
+                  <linearGradient id="normalGradient" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#22c55e" />
+                    <stop offset="100%" stopColor="#86efac" />
+                  </linearGradient>
+                  <linearGradient id="warningGradient" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#facc15" />
+                    <stop offset="100%" stopColor="#fde68a" />
+                  </linearGradient>
+                  <linearGradient id="criticalGradient" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#ef4444" />
+                    <stop offset="100%" stopColor="#fca5a5" />
+                  </linearGradient>
+                </defs>
                 <Pie
                   data={statusData}
                   dataKey="value"
                   nameKey="name"
-                  innerRadius={50}
-                  outerRadius={80}
-                  paddingAngle={5}
+                  innerRadius={75}
+                  outerRadius={110}
+                  paddingAngle={7}
+                  cornerRadius={14}
+                  stroke="none"
                 >
-                  {statusData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={STATUS_COLORS[index]} />
-                  ))}
+                  <Cell fill="url(#normalGradient)" />
+                  <Cell fill="url(#warningGradient)" />
+                  <Cell fill="url(#criticalGradient)" />
                 </Pie>
-                <Tooltip />
+                <Tooltip
+                  contentStyle={{
+                    borderRadius: "16px",
+                    border: "1px solid #dcfce7",
+                    boxShadow: "0 18px 40px rgba(15, 23, 42, 0.14)",
+                  }}
+                />
               </PieChart>
             </ResponsiveContainer>
+
+            <div className="pie-center-info">
+              <strong>{sensors.length}</strong>
+              <span>Total Petak</span>
+            </div>
           </div>
         </div>
       </section>
@@ -252,7 +303,7 @@ function DashboardPage({ sensors, summary, lastUpdate, fetchData, togglePump }) 
               <RefreshCw size={18} />
               <div>
                 <strong>Auto refresh aktif</strong>
-                <p>Frontend melakukan pembaruan data setiap 5 detik.</p>
+                <p>Frontend melakukan pembaruan data setiap 60 detik.</p>
               </div>
             </div>
 

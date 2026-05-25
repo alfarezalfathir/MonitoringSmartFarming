@@ -1628,3 +1628,3113 @@ tr:hover td {
     transform: none;
   }
 }
+
+/* ISOMETRIC FARM MAP */
+.farm-dashboard-visual {
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #dff7ff 0%, #e9fbdc 45%, #86c96a 100%);
+  border: 1px solid #dceee1;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+}
+
+.farm-visual-header {
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(6, 78, 59, 0.92);
+  color: white;
+}
+
+.farm-visual-header h2 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+}
+
+.farm-visual-header p {
+  margin: 5px 0 0;
+  color: #dcfce7;
+  font-size: 13px;
+}
+
+.weather-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  font-weight: 800;
+}
+
+.farm-scene {
+  min-height: 680px;
+  position: relative;
+  overflow: hidden;
+}
+
+.farm-background {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent 45%),
+    linear-gradient(180deg, #bdeeff 0%, #dff7ff 34%, #9bd46f 100%);
+}
+
+.sun-art {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  left: 70px;
+  top: 35px;
+  border-radius: 50%;
+  background: #fff6b7;
+  box-shadow: 0 0 60px rgba(255, 230, 80, 0.8);
+}
+
+.cloud {
+  position: absolute;
+  width: 170px;
+  height: 48px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.cloud::before {
+  width: 68px;
+  height: 68px;
+  left: 28px;
+  top: -34px;
+}
+
+.cloud::after {
+  width: 88px;
+  height: 88px;
+  right: 22px;
+  top: -46px;
+}
+
+.cloud-one {
+  top: 70px;
+  right: 210px;
+}
+
+.cloud-two {
+  top: 110px;
+  left: 240px;
+  transform: scale(0.75);
+}
+
+.mountain {
+  position: absolute;
+  bottom: 360px;
+  width: 600px;
+  height: 160px;
+  border-radius: 55% 55% 0 0;
+  background: rgba(65, 130, 105, 0.38);
+}
+
+.mountain-one {
+  left: -120px;
+}
+
+.mountain-two {
+  right: -120px;
+  background: rgba(40, 100, 85, 0.3);
+}
+
+.barn {
+  position: absolute;
+  right: 180px;
+  top: 170px;
+  width: 120px;
+  height: 110px;
+}
+
+.barn-roof {
+  width: 130px;
+  height: 58px;
+  background: #9b3a2d;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.barn-body {
+  width: 100px;
+  height: 70px;
+  margin-left: 15px;
+  margin-top: -2px;
+  border-radius: 6px 6px 0 0;
+  background: #b85a38;
+  border: 4px solid #7c2d12;
+}
+
+.farm-land {
+  position: absolute;
+  left: 38px;
+  right: 220px;
+  bottom: 42px;
+  padding: 38px;
+  min-height: 500px;
+  transform: perspective(1200px) rotateX(54deg) rotateZ(-2deg);
+  transform-origin: center bottom;
+  border-radius: 34px;
+  background:
+    linear-gradient(90deg, rgba(59, 130, 246, 0.35) 0 4%, transparent 4% 48%, rgba(59, 130, 246, 0.35) 48% 52%, transparent 52% 96%, rgba(59, 130, 246, 0.35) 96%),
+    #8ccf62;
+  box-shadow:
+    0 32px 0 #7b4a25,
+    0 42px 40px rgba(15, 23, 42, 0.28);
+}
+
+.farm-grid-map {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+  position: relative;
+  z-index: 2;
+}
+
+.farm-plot-card {
+  min-height: 230px;
+  border-radius: 18px;
+  padding: 14px;
+  position: relative;
+  background: #6b3f1f;
+  border: 5px solid #8b5e34;
+  box-shadow:
+    inset 0 0 0 4px rgba(255, 255, 255, 0.12),
+    0 14px 20px rgba(15, 23, 42, 0.16);
+  overflow: hidden;
+}
+
+.farm-plot-card::before {
+  content: "";
+  position: absolute;
+  inset: 20px 12px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 0 4px,
+      transparent 4px 18px
+    );
+  opacity: 0.4;
+}
+
+.farm-plot-card.normal {
+  border-color: #5f8f3b;
+}
+
+.farm-plot-card.warning {
+  border-color: #d3a327;
+}
+
+.farm-plot-card.critical {
+  border-color: #b94a48;
+}
+
+.plot-label {
+  position: relative;
+  z-index: 6;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  color: white;
+  background: rgba(6, 78, 59, 0.92);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: rotateZ(2deg);
+}
+
+.plot-label strong {
+  display: block;
+  font-size: 15px;
+}
+
+.plot-label span {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: #bbf7d0;
+}
+
+.plot-label small {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #22c55e;
+  font-weight: 900;
+  font-size: 10px;
+}
+
+.farm-plot-card.warning .plot-label small {
+  background: #facc15;
+  color: #422006;
+}
+
+.farm-plot-card.critical .plot-label small {
+  background: #ef4444;
+  color: white;
+}
+
+.crop-field {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+.crop-row {
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
+}
+
+.crop-plant {
+  width: 18px;
+  height: 22px;
+  display: block;
+  position: relative;
+  transform: rotateX(-54deg) rotateZ(2deg);
+}
+
+.crop-plant::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50% 50% 45% 45%;
+  background: #22c55e;
+  box-shadow: 0 10px 0 rgba(22, 101, 52, 0.25);
+}
+
+.chili .crop-plant::after,
+.tomato .crop-plant::after,
+.melon .crop-plant::after,
+.onion .crop-plant::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 5px;
+  top: 9px;
+  border-radius: 50%;
+}
+
+.chili .crop-plant::after {
+  background: #dc2626;
+  border-radius: 60% 60% 60% 10%;
+}
+
+.tomato .crop-plant::after {
+  background: #ef4444;
+}
+
+.melon .crop-plant::after {
+  width: 16px;
+  height: 16px;
+  left: 1px;
+  background: #facc15;
+}
+
+.onion .crop-plant::after {
+  background: #d97706;
+}
+
+.paddy .crop-plant::before {
+  height: 32px;
+  width: 8px;
+  background: linear-gradient(#84cc16, #16a34a);
+  border-radius: 999px;
+}
+
+.corn .crop-plant::before {
+  height: 36px;
+  width: 15px;
+  background: linear-gradient(#84cc16, #166534);
+  border-radius: 70% 70% 20% 20%;
+}
+
+.lettuce .crop-plant::before {
+  width: 28px;
+  height: 24px;
+  background: #65a30d;
+  border-radius: 50%;
+}
+
+.kangkung .crop-plant::before {
+  width: 12px;
+  height: 32px;
+  background: #16a34a;
+  border-radius: 999px;
+}
+
+.sensor-device {
+  position: absolute;
+  z-index: 7;
+  right: 18px;
+  bottom: 48px;
+  transform: rotateX(-54deg) rotateZ(2deg);
+  display: grid;
+  place-items: center;
+}
+
+.wifi-wave {
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  animation: wifiPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes wifiPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+.sensor-box {
+  padding: 7px 9px;
+  border-radius: 8px;
+  background: white;
+  color: #064e3b;
+  font-size: 10px;
+  font-weight: 900;
+  box-shadow: 0 8px 14px rgba(15, 23, 42, 0.25);
+}
+
+.sensor-stick {
+  width: 5px;
+  height: 36px;
+  background: #94a3b8;
+  border-radius: 999px;
+}
+
+.plot-stats {
+  position: absolute;
+  z-index: 8;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  padding: 9px;
+  border-radius: 12px;
+  color: white;
+  background: rgba(6, 78, 59, 0.9);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  transform: rotateZ(2deg);
+}
+
+.plot-stats div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.farm-side-panel {
+  position: absolute;
+  right: 22px;
+  top: 92px;
+  width: 180px;
+  display: grid;
+  gap: 12px;
+  z-index: 8;
+}
+
+.side-card {
+  padding: 14px;
+  border-radius: 14px;
+  color: white;
+  background: rgba(6, 78, 59, 0.9);
+  box-shadow: 0 12px 22px rgba(15, 23, 42, 0.18);
+}
+
+.side-card p {
+  margin: 0 0 6px;
+  color: #bbf7d0;
+  font-size: 12px;
+}
+
+.side-card h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.side-card.online h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #86efac;
+  font-size: 20px;
+}
+
+.alert-mini {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 9px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.alert-mini.danger {
+  background: #ef4444;
+}
+
+.alert-mini.safe {
+  background: #22c55e;
+}
+
+@media (max-width: 1200px) {
+  .farm-scene {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .farm-land {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    min-height: auto;
+  }
+
+  .farm-grid-map {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .farm-side-panel {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: auto;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .farm-visual-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .farm-grid-map,
+  .farm-side-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* INTERACTION + ANIMATION FOR FARM MAP */
+.farm-plot-card {
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.25s ease;
+}
+
+.farm-plot-card:hover {
+  transform: translateY(-12px) scale(1.025);
+  filter: brightness(1.04);
+  z-index: 8;
+}
+
+.farm-plot-card.selected {
+  outline: 5px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 0 0 8px rgba(34, 197, 94, 0.28),
+    0 26px 40px rgba(15, 23, 42, 0.28);
+  animation: selectedPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes selectedPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 6px rgba(34, 197, 94, 0.22),
+      0 26px 40px rgba(15, 23, 42, 0.24);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 13px rgba(34, 197, 94, 0.06),
+      0 30px 48px rgba(15, 23, 42, 0.32);
+  }
+}
+
+/* tanaman goyang */
+.crop-plant {
+  animation: plantSway 2.8s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes plantSway {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: -2deg;
+  }
+
+  50% {
+    translate: 0 -2px;
+    rotate: 3deg;
+  }
+}
+
+/* awan bergerak */
+.cloud-one {
+  animation: cloudMoveOne 12s ease-in-out infinite alternate;
+}
+
+.cloud-two {
+  animation: cloudMoveTwo 14s ease-in-out infinite alternate;
+}
+
+@keyframes cloudMoveOne {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-45px);
+  }
+}
+
+@keyframes cloudMoveTwo {
+  from {
+    transform: translateX(0) scale(0.75);
+  }
+
+  to {
+    transform: translateX(55px) scale(0.75);
+  }
+}
+
+/* matahari glow */
+.sun-art {
+  animation: sunGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes sunGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 45px rgba(255, 230, 80, 0.65);
+  }
+
+  50% {
+    box-shadow: 0 0 90px rgba(255, 230, 80, 0.95);
+  }
+}
+
+/* sensor sinyal */
+.sensor-device {
+  animation: sensorFloat 2.2s ease-in-out infinite;
+}
+
+@keyframes sensorFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -5px;
+  }
+}
+
+.sensor-box {
+  position: relative;
+}
+
+.sensor-box::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 12px;
+  border: 2px solid rgba(56, 189, 248, 0.45);
+  animation: sensorPulseRing 1.4s ease-out infinite;
+}
+
+@keyframes sensorPulseRing {
+  from {
+    scale: 0.7;
+    opacity: 0.9;
+  }
+
+  to {
+    scale: 1.45;
+    opacity: 0;
+  }
+}
+
+/* irigasi / air */
+.water-main-line {
+  position: absolute;
+  left: 33%;
+  right: 20%;
+  bottom: 250px;
+  height: 8px;
+  z-index: 4;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(14, 165, 233, 0.1),
+    rgba(14, 165, 233, 0.9),
+    rgba(14, 165, 233, 0.1)
+  );
+  animation: waterFlow 1.1s linear infinite;
+  opacity: 0.75;
+}
+
+.water-stream {
+  position: absolute;
+  z-index: 5;
+  width: 8px;
+  height: 90px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 165, 233, 0),
+    rgba(14, 165, 233, 0.85),
+    rgba(14, 165, 233, 0)
+  );
+  animation: waterDrop 0.9s linear infinite;
+  pointer-events: none;
+}
+
+.stream-one {
+  right: 52px;
+  bottom: 56px;
+}
+
+.stream-two {
+  right: 88px;
+  bottom: 70px;
+  animation-delay: 0.25s;
+}
+
+@keyframes waterFlow {
+  from {
+    background-position: 0 0;
+    filter: brightness(1);
+  }
+
+  to {
+    background-position: 80px 0;
+    filter: brightness(1.25);
+  }
+}
+
+@keyframes waterDrop {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+}
+
+/* popover detail */
+.plot-detail-popover {
+  position: absolute;
+  left: 28px;
+  top: 92px;
+  z-index: 20;
+  width: 310px;
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #bbf7d0;
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.22);
+  animation: popIn 0.25s ease both;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.close-detail {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  border: none;
+  background: #f1f5f9;
+  color: #334155;
+  border-radius: 999px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.detail-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-right: 30px;
+  margin-bottom: 16px;
+}
+
+.detail-head span {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.detail-head h3 {
+  margin: 3px 0 0;
+  color: #064e3b;
+  font-size: 24px;
+}
+
+.detail-status {
+  height: fit-content;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.detail-status.normal {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.detail-status.warning {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.detail-status.critical {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.detail-grid div {
+  padding: 13px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+}
+
+.detail-grid svg {
+  color: #16a34a;
+}
+
+.detail-grid strong {
+  display: block;
+  margin-top: 6px;
+  color: #102018;
+  font-size: 20px;
+}
+
+.detail-grid span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pump-detail {
+  margin-top: 13px;
+  padding: 13px;
+  border-radius: 16px;
+  background: #ecfdf5;
+  color: #166534;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+}
+
+.detail-rec {
+  margin: 13px 0 0;
+  padding: 13px;
+  border-radius: 16px;
+  background: #f0fdf4;
+  color: #166534;
+  line-height: 1.6;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hint-card span {
+  color: #dcfce7;
+  line-height: 1.5;
+  font-size: 12px;
+}
+
+/* responsif detail */
+@media (max-width: 900px) {
+  .plot-detail-popover {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    margin: 16px;
+  }
+
+  .water-main-line {
+    display: none;
+  }
+}
+
+/* CLEAN FARM 3D MODE - TANPA RUMAH, GUNUNG, MATAHARI */
+.farm-dashboard-visual {
+  background: linear-gradient(180deg, #ecfdf5 0%, #dff7e8 45%, #bbf7d0 100%);
+}
+
+.farm-scene {
+  min-height: 640px;
+  background:
+    radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), transparent 32%),
+    radial-gradient(circle at top right, rgba(132, 204, 22, 0.12), transparent 30%),
+    linear-gradient(180deg, #f0fdf4 0%, #dcfce7 45%, #bbf7d0 100%);
+}
+
+.farm-background {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(220, 252, 231, 0.6)),
+    radial-gradient(circle at 50% 10%, rgba(34, 197, 94, 0.14), transparent 35%);
+}
+
+.farm-bg-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(22, 101, 52, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 101, 52, 0.12) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+/* matikan elemen dekorasi lama kalau masih kebaca */
+.sun-art,
+.cloud,
+.mountain,
+.barn,
+.barn-roof,
+.barn-body {
+  display: none !important;
+}
+
+/* lahan utama dibuat lebih dominan */
+.farm-land {
+  left: 46px;
+  right: 210px;
+  bottom: 42px;
+  min-height: 510px;
+  padding: 42px;
+  background:
+    linear-gradient(90deg, rgba(59, 130, 246, 0.36) 0 4%, transparent 4% 48%, rgba(59, 130, 246, 0.36) 48% 52%, transparent 52% 96%, rgba(59, 130, 246, 0.36) 96%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(22, 101, 52, 0.08) 0 18px,
+      rgba(255, 255, 255, 0.06) 18px 28px
+    ),
+    #8ccf62;
+  box-shadow:
+    0 34px 0 #7b4a25,
+    0 48px 46px rgba(15, 23, 42, 0.28);
+}
+
+/* petak dibuat lebih tebal/berasa 3D */
+.farm-plot-card {
+  min-height: 245px;
+  box-shadow:
+    inset 0 0 0 4px rgba(255, 255, 255, 0.13),
+    0 18px 0 rgba(88, 57, 31, 0.55),
+    0 28px 26px rgba(15, 23, 42, 0.22);
+}
+
+.farm-plot-card:hover {
+  transform: translateY(-18px) scale(1.03);
+}
+
+/* panel kanan tetap rapi */
+.farm-side-panel {
+  top: 88px;
+}
+
+/* REAL THREE.JS FARM 3D MODEL */
+.farm3d-shell {
+  border-radius: 28px;
+  overflow: hidden;
+  background: white;
+  border: 1px solid #dceee1;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+}
+
+.farm3d-toolbar {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #064e3b, #16a34a);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.farm3d-toolbar strong {
+  display: block;
+  font-size: 18px;
+}
+
+.farm3d-toolbar span {
+  display: block;
+  margin-top: 4px;
+  color: #dcfce7;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.farm3d-canvas-wrap {
+  position: relative;
+  min-height: 540px;
+  background: #eef7ef;
+}
+
+.farm3d-canvas-wrap canvas {
+  display: block;
+  width: 100%;
+  height: 540px;
+  cursor: grab;
+}
+
+.farm3d-canvas-wrap canvas:active {
+  cursor: grabbing;
+}
+
+.farm3d-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  z-index: 10;
+  color: #166534;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+
+.farm3d-empty strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 22px;
+}
+
+.farm3d-empty p {
+  margin: 8px 0 0;
+  color: #64748b;
+}
+
+.farm3d-tooltip {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  width: 230px;
+  padding: 15px;
+  border-radius: 18px;
+  color: #102018;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #bbf7d0;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+  z-index: 20;
+}
+
+.farm3d-tooltip strong {
+  display: block;
+  color: #064e3b;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.farm3d-tooltip span {
+  display: block;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+/* PREMIUM HOME FARM PREVIEW FIX */
+.premium-preview {
+  min-height: 440px;
+  padding: 26px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(220, 252, 231, 0.45), transparent 28%),
+    linear-gradient(135deg, #064e3b 0%, #15803d 52%, #84cc16 100%);
+  box-shadow: 0 28px 70px rgba(22, 101, 52, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-preview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 52px 52px;
+  opacity: 0.5;
+}
+
+.preview-header-card {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  min-width: 280px;
+  gap: 34px;
+  padding: 14px 16px;
+  border-radius: 20px;
+  color: white;
+  background: rgba(6, 78, 59, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(12px);
+}
+
+.preview-header-card span {
+  display: block;
+  color: #bbf7d0;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.preview-header-card strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 17px;
+}
+
+.preview-header-card small {
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  font-weight: 900;
+}
+
+.preview-stage {
+  position: relative;
+  z-index: 3;
+  height: 350px;
+  margin-top: 14px;
+  transform-style: preserve-3d;
+  perspective: 1100px;
+}
+
+.preview-grid {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 34px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  transform: rotateX(58deg) rotateZ(-12deg);
+  transform-origin: center;
+}
+
+.preview-plot {
+  position: relative;
+  height: 128px;
+  border: none;
+  border-radius: 24px;
+  transform-style: preserve-3d;
+  animation: plotFloat 4s ease-in-out infinite;
+}
+
+@keyframes plotFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -7px;
+  }
+}
+
+.preview-plot-top {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  transform: translateZ(22px);
+  border: 3px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    inset 0 0 0 4px rgba(255, 255, 255, 0.12),
+    0 18px 24px rgba(15, 23, 42, 0.2);
+}
+
+.preview-plot-side {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -24px;
+  height: 42px;
+  border-radius: 0 0 18px 18px;
+  background: #7b4a25;
+  transform: rotateX(-90deg);
+  transform-origin: top;
+  filter: brightness(0.85);
+}
+
+.preview-plot.normal .preview-plot-top {
+  background:
+    linear-gradient(135deg, rgba(187, 247, 208, 0.88), rgba(34, 197, 94, 0.9)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(22, 101, 52, 0.18) 0 7px,
+      transparent 7px 18px
+    );
+  border-color: #86efac;
+}
+
+.preview-plot.warning .preview-plot-top {
+  background:
+    linear-gradient(135deg, rgba(254, 249, 195, 0.92), rgba(250, 204, 21, 0.88)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(133, 77, 14, 0.14) 0 7px,
+      transparent 7px 18px
+    );
+  border-color: #facc15;
+}
+
+.preview-plot.critical .preview-plot-top {
+  background:
+    linear-gradient(135deg, rgba(254, 202, 202, 0.95), rgba(248, 113, 113, 0.9)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(127, 29, 29, 0.13) 0 7px,
+      transparent 7px 18px
+    );
+  border-color: #f87171;
+}
+
+.mini-rice-field {
+  position: absolute;
+  inset: 18px 18px 34px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.mini-rice {
+  position: relative;
+  width: 9px;
+  height: 24px;
+  margin: auto;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #d9f99d, #15803d);
+  transform-origin: bottom center;
+  animation: miniRiceSway 2.4s ease-in-out infinite;
+  box-shadow: 7px 3px 0 rgba(22, 101, 52, 0.45),
+    -6px 5px 0 rgba(132, 204, 22, 0.65);
+}
+
+.preview-plot.warning .mini-rice {
+  background: linear-gradient(180deg, #fef08a, #ca8a04);
+}
+
+.preview-plot.critical .mini-rice {
+  background: linear-gradient(180deg, #fecaca, #b91c1c);
+}
+
+@keyframes miniRiceSway {
+  0%,
+  100% {
+    rotate: -3deg;
+  }
+
+  50% {
+    rotate: 5deg;
+  }
+}
+
+.preview-sensor {
+  position: absolute;
+  right: 16px;
+  bottom: 30px;
+  display: grid;
+  place-items: center;
+  transform: rotateX(-58deg) rotateZ(12deg);
+}
+
+.sensor-mini-box {
+  width: 24px;
+  height: 19px;
+  border-radius: 6px;
+  background: white;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.22);
+}
+
+.sensor-signal {
+  position: absolute;
+  top: -22px;
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(14, 165, 233, 0.85);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: signalPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes signalPulse {
+  0%,
+  100% {
+    scale: 0.78;
+    opacity: 0.45;
+  }
+
+  50% {
+    scale: 1.16;
+    opacity: 1;
+  }
+}
+
+.preview-plot-label {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  color: white;
+  background: rgba(6, 78, 59, 0.88);
+  transform: rotateX(-58deg) rotateZ(12deg);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.22);
+}
+
+.preview-plot-label strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.preview-plot-label small {
+  display: block;
+  margin-top: 4px;
+  color: #bbf7d0;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.preview-water-line {
+  position: absolute;
+  z-index: 1;
+  height: 9px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(14, 165, 233, 0.05),
+    rgba(14, 165, 233, 0.9),
+    rgba(14, 165, 233, 0.05)
+  );
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+  animation: previewWater 1.2s linear infinite;
+}
+
+.water-a {
+  left: 90px;
+  right: 130px;
+  bottom: 126px;
+  transform: rotate(-12deg);
+}
+
+.water-b {
+  width: 260px;
+  left: 230px;
+  bottom: 218px;
+  transform: rotate(68deg);
+  opacity: 0.75;
+}
+
+@keyframes previewWater {
+  from {
+    filter: brightness(0.9);
+  }
+
+  to {
+    filter: brightness(1.35);
+  }
+}
+
+.preview-floating-card {
+  position: absolute;
+  z-index: 8;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 13px;
+  border-radius: 999px;
+  color: #064e3b;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #bbf7d0;
+  font-weight: 900;
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.17);
+  animation: floatingCard 3s ease-in-out infinite;
+}
+
+.card-temp {
+  right: 26px;
+  top: 56px;
+}
+
+.card-water {
+  left: 44px;
+  bottom: 38px;
+  animation-delay: 0.6s;
+}
+
+@keyframes floatingCard {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+/* override farm row lama biar tidak ganggu */
+.premium-preview .farm-row,
+.premium-preview .farm-plot,
+.premium-preview .farm-plot span,
+.premium-preview .farm-plot small {
+  all: unset;
+}
+
+/* CLEAN INTERACTIVE 2D FARM PREVIEW */
+.smart-preview {
+  min-height: 440px;
+  padding: 24px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 85% 10%, rgba(34, 197, 94, 0.3), transparent 30%),
+    linear-gradient(135deg, #064e3b, #16a34a 55%, #84cc16);
+  box-shadow: 0 28px 70px rgba(22, 101, 52, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  position: relative;
+  overflow: hidden;
+}
+
+.smart-preview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.5;
+}
+
+.smart-preview-top {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.smart-preview-top span {
+  display: block;
+  color: #bbf7d0;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.smart-preview-top h3 {
+  margin: 4px 0 0;
+  color: white;
+  font-size: 24px;
+  letter-spacing: -0.7px;
+}
+
+.preview-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: #064e3b;
+  background: #dcfce7;
+  font-weight: 900;
+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.14);
+}
+
+.preview-live-badge span {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+  animation: livePulse 1.4s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%,
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+
+  50% {
+    scale: 0.8;
+    opacity: 0.55;
+  }
+}
+
+.smart-preview-content {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1.3fr 0.85fr;
+  gap: 20px;
+  min-height: 335px;
+}
+
+.farm-board {
+  position: relative;
+  min-height: 335px;
+  padding: 18px;
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08)),
+    rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  overflow: hidden;
+}
+
+.modern-plot {
+  position: relative;
+  min-height: 145px;
+  border: none;
+  border-radius: 24px;
+  padding: 14px;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.18);
+  transition: 0.25s ease;
+  animation: plotAppear 0.55s ease both;
+}
+
+@keyframes plotAppear {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modern-plot:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 45px rgba(15, 23, 42, 0.24);
+}
+
+.modern-plot.active {
+  outline: 4px solid rgba(255, 255, 255, 0.88);
+  box-shadow:
+    0 0 0 8px rgba(187, 247, 208, 0.28),
+    0 28px 50px rgba(15, 23, 42, 0.28);
+}
+
+.modern-plot.normal {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.4), transparent 30%),
+    linear-gradient(135deg, #dcfce7, #86efac);
+}
+
+.modern-plot.warning {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.45), transparent 30%),
+    linear-gradient(135deg, #fef9c3, #fde68a);
+}
+
+.modern-plot.critical {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.45), transparent 30%),
+    linear-gradient(135deg, #fee2e2, #fca5a5);
+}
+
+.plot-head {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.plot-head strong {
+  color: #064e3b;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.plot-head span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: rgba(6, 78, 59, 0.86);
+  color: white;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.plant-area {
+  position: absolute;
+  left: 16px;
+  right: 72px;
+  bottom: 34px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.plant-blade {
+  width: 8px;
+  height: 27px;
+  margin: auto;
+  display: block;
+  border-radius: 999px 999px 2px 2px;
+  background: linear-gradient(180deg, #f7fee7, #15803d);
+  transform-origin: bottom center;
+  animation: bladeMove 2.4s ease-in-out infinite;
+  box-shadow:
+    8px 3px 0 rgba(22, 101, 52, 0.45),
+    -6px 6px 0 rgba(132, 204, 22, 0.55);
+}
+
+.warning .plant-blade {
+  background: linear-gradient(180deg, #fef08a, #ca8a04);
+}
+
+.critical .plant-blade {
+  background: linear-gradient(180deg, #fecaca, #b91c1c);
+}
+
+@keyframes bladeMove {
+  0%,
+  100% {
+    rotate: -3deg;
+  }
+
+  50% {
+    rotate: 5deg;
+  }
+}
+
+.iot-node {
+  position: absolute;
+  right: 18px;
+  bottom: 45px;
+  width: 42px;
+  height: 52px;
+  z-index: 5;
+}
+
+.node-box {
+  position: absolute;
+  bottom: 0;
+  left: 7px;
+  width: 28px;
+  height: 22px;
+  border-radius: 9px;
+  background: white;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
+}
+
+.node-box::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  bottom: -22px;
+  width: 4px;
+  height: 24px;
+  border-radius: 999px;
+  background: #64748b;
+}
+
+.signal {
+  position: absolute;
+  left: 9px;
+  border: 3px solid #0ea5e9;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: rotate(-45deg);
+  opacity: 0;
+}
+
+.signal-a {
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  animation: signalWave 1.4s ease-in-out infinite;
+}
+
+.signal-b {
+  top: -7px;
+  left: 2px;
+  width: 38px;
+  height: 38px;
+  animation: signalWave 1.4s ease-in-out infinite 0.25s;
+}
+
+@keyframes signalWave {
+  0% {
+    opacity: 0;
+    scale: 0.7;
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    scale: 1.1;
+  }
+}
+
+.water-animation {
+  position: absolute;
+  right: 58px;
+  bottom: 32px;
+  width: 40px;
+  height: 70px;
+}
+
+.water-animation span {
+  position: absolute;
+  width: 7px;
+  height: 26px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(14, 165, 233, 0), #0ea5e9);
+  animation: waterDropMini 0.85s linear infinite;
+}
+
+.water-animation span:nth-child(1) {
+  left: 0;
+}
+
+.water-animation span:nth-child(2) {
+  left: 14px;
+  animation-delay: 0.2s;
+}
+
+.water-animation span:nth-child(3) {
+  left: 28px;
+  animation-delay: 0.4s;
+}
+
+@keyframes waterDropMini {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+}
+
+.plot-mini-stats {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  z-index: 6;
+}
+
+.plot-mini-stats span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #064e3b;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.rain-line {
+  position: absolute;
+  z-index: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(14, 165, 233, 0),
+    rgba(14, 165, 233, 0.85),
+    rgba(14, 165, 233, 0)
+  );
+  animation: flowMove 1.2s linear infinite;
+}
+
+.rain-one {
+  width: 70%;
+  left: 15%;
+  top: 50%;
+}
+
+.rain-two {
+  width: 45%;
+  left: 25%;
+  top: 70%;
+  transform: rotate(90deg);
+  opacity: 0.6;
+}
+
+@keyframes flowMove {
+  from {
+    filter: brightness(0.8);
+  }
+
+  to {
+    filter: brightness(1.4);
+  }
+}
+
+.preview-info-panel {
+  min-height: 335px;
+  padding: 20px;
+  border-radius: 28px;
+  color: #102018;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.14);
+  animation: infoPanelFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes infoPanelFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -7px;
+  }
+}
+
+.info-status {
+  display: inline-flex;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: white;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.info-status.normal {
+  background: #16a34a;
+}
+
+.info-status.warning {
+  background: #f59e0b;
+}
+
+.info-status.critical {
+  background: #ef4444;
+}
+
+.preview-info-panel h4 {
+  margin: 14px 0 8px;
+  font-size: 28px;
+  color: #064e3b;
+  letter-spacing: -0.7px;
+}
+
+.preview-info-panel p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.info-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.info-metrics div {
+  padding: 13px;
+  border-radius: 18px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+}
+
+.info-metrics svg {
+  color: #16a34a;
+}
+
+.info-metrics strong {
+  display: block;
+  margin-top: 6px;
+  color: #102018;
+  font-size: 20px;
+}
+
+.info-metrics span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.preview-progress {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 18px;
+  background: #f0fdf4;
+}
+
+.preview-progress > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  color: #166534;
+  font-weight: 900;
+  font-size: 13px;
+  margin-bottom: 9px;
+}
+
+.progress-track {
+  height: 10px;
+  border-radius: 999px;
+  background: #dcfce7;
+  overflow: hidden;
+}
+
+.progress-track div {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #16a34a, #84cc16);
+  transition: 0.35s ease;
+}
+
+@media (max-width: 1100px) {
+  .smart-preview-content {
+    grid-template-columns: 1fr;
+  }
+
+  .farm-board {
+    min-height: 430px;
+  }
+}
+
+@media (max-width: 650px) {
+  .farm-board {
+    grid-template-columns: 1fr;
+  }
+
+  .smart-preview-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* RAPihin HOME PREVIEW - CLEAN FINAL */
+.home-showcase {
+  align-items: stretch;
+}
+
+.smart-preview {
+  min-height: 430px;
+  padding: 22px;
+  border-radius: 32px;
+}
+
+.smart-preview-top {
+  margin-bottom: 16px;
+}
+
+.smart-preview-top h3 {
+  font-size: 22px;
+}
+
+.smart-preview-content {
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 16px;
+  min-height: 320px;
+}
+
+.farm-board {
+  min-height: 320px;
+  padding: 16px;
+  gap: 12px;
+  border-radius: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.modern-plot {
+  min-height: 138px;
+  padding: 13px;
+  border-radius: 20px;
+}
+
+.plot-head strong {
+  font-size: 14px;
+}
+
+.plot-head span {
+  font-size: 10px;
+  padding: 5px 8px;
+}
+
+.plant-area {
+  left: 16px;
+  right: 68px;
+  bottom: 38px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+}
+
+.plant-blade {
+  width: 6px;
+  height: 22px;
+  box-shadow:
+    6px 3px 0 rgba(22, 101, 52, 0.38),
+    -5px 5px 0 rgba(132, 204, 22, 0.48);
+}
+
+.iot-node {
+  right: 16px;
+  bottom: 48px;
+  scale: 0.9;
+}
+
+.plot-mini-stats {
+  left: 12px;
+  right: 12px;
+  bottom: 10px;
+}
+
+.plot-mini-stats span {
+  font-size: 11px;
+  padding: 5px 8px;
+}
+
+.preview-info-panel {
+  min-height: 320px;
+  padding: 18px;
+  border-radius: 24px;
+}
+
+.preview-info-panel h4 {
+  font-size: 24px;
+  margin: 12px 0 6px;
+}
+
+.preview-info-panel p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.info-metrics {
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.info-metrics div {
+  padding: 11px;
+  border-radius: 15px;
+}
+
+.info-metrics strong {
+  font-size: 18px;
+}
+
+.preview-progress {
+  margin-top: 14px;
+  padding: 12px;
+}
+
+/* biar tombol/petak aktif nggak terlalu lebay */
+.modern-plot.active {
+  outline: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 0 0 5px rgba(187, 247, 208, 0.24),
+    0 20px 36px rgba(15, 23, 42, 0.22);
+}
+
+.modern-plot:hover {
+  transform: translateY(-4px);
+}
+
+/* rapihin air line supaya nggak ganggu */
+.rain-line {
+  opacity: 0.45;
+}
+
+.rain-one {
+  width: 58%;
+  left: 20%;
+  top: 51%;
+}
+
+.rain-two {
+  width: 36%;
+  left: 32%;
+  top: 69%;
+}
+
+/* supaya card kanan nggak goyang terlalu mengganggu */
+.preview-info-panel {
+  animation: none;
+}
+
+/* RESPONSIVE HOME PREVIEW */
+@media (max-width: 1200px) {
+  .smart-preview-content {
+    grid-template-columns: 1fr;
+  }
+
+  .farm-board {
+    min-height: 340px;
+  }
+
+  .preview-info-panel {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .smart-preview {
+    padding: 16px;
+  }
+
+  .farm-board {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .modern-plot {
+    min-height: 135px;
+  }
+
+  .info-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* FINAL CLEAN INTERACTIVE FARM PREVIEW */
+.smart-preview {
+  min-height: 430px;
+  padding: 26px;
+  border-radius: 34px;
+  overflow: hidden;
+}
+
+.smart-preview-content {
+  grid-template-columns: 1fr 0.72fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.farm-board {
+  --mx: 0;
+  --my: 0;
+
+  min-height: 340px;
+  padding: 18px;
+  gap: 14px;
+  border-radius: 30px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  background:
+    radial-gradient(
+      circle at calc(50% + (var(--mx) * 18%)) calc(50% + (var(--my) * 18%)),
+      rgba(255, 255, 255, 0.26),
+      transparent 38%
+    ),
+    rgba(255, 255, 255, 0.13);
+
+  transform:
+    perspective(900px)
+    rotateX(calc(var(--my) * -3deg))
+    rotateY(calc(var(--mx) * 3deg));
+
+  transition: transform 0.15s ease, background 0.2s ease;
+  transform-style: preserve-3d;
+}
+
+.modern-plot {
+  min-height: 142px;
+  padding: 14px;
+  border-radius: 24px;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.modern-plot:hover {
+  transform: translateY(-5px) scale(1.015);
+}
+
+.modern-plot.active {
+  outline: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 0 0 5px rgba(187, 247, 208, 0.24),
+    0 22px 42px rgba(15, 23, 42, 0.24);
+}
+
+.plot-head {
+  align-items: center;
+}
+
+.plot-head strong {
+  font-size: 14px;
+  color: #064e3b;
+  max-width: 90px;
+  white-space: nowrap;
+}
+
+.plot-head span {
+  font-size: 10px;
+  padding: 5px 8px;
+  flex-shrink: 0;
+}
+
+/* area tanaman dibuat lebih turun dan rapi */
+.plant-area {
+  left: 18px;
+  right: 78px;
+  bottom: 47px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px 8px;
+}
+
+.plant-blade {
+  width: 6px;
+  height: 21px;
+  box-shadow:
+    6px 3px 0 rgba(22, 101, 52, 0.38),
+    -5px 5px 0 rgba(132, 204, 22, 0.48);
+}
+
+/* sensor lebih kecil dan tidak nutup tanaman */
+.iot-node {
+  right: 20px;
+  bottom: 52px;
+  width: 34px;
+  height: 46px;
+  scale: 0.82;
+}
+
+.node-box {
+  width: 26px;
+  height: 20px;
+  border-radius: 8px;
+}
+
+.signal-a {
+  width: 20px;
+  height: 20px;
+}
+
+.signal-b {
+  width: 32px;
+  height: 32px;
+}
+
+/* statistik bawah lebih rapi */
+.plot-mini-stats {
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+}
+
+.plot-mini-stats span {
+  padding: 6px 10px;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+/* garis air jangan terlalu ganggu */
+.rain-line {
+  opacity: 0.28;
+  height: 6px;
+}
+
+.rain-one {
+  width: 58%;
+  left: 20%;
+  top: 51%;
+}
+
+.rain-two {
+  width: 34%;
+  left: 34%;
+  top: 70%;
+}
+
+/* panel kanan dirapihin */
+.preview-info-panel {
+  min-height: 340px;
+  padding: 20px;
+  border-radius: 28px;
+  animation: none;
+}
+
+.preview-info-panel h4 {
+  font-size: 25px;
+  margin: 12px 0 8px;
+}
+
+.preview-info-panel p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.info-metrics {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.info-metrics div {
+  padding: 12px;
+  border-radius: 16px;
+}
+
+.info-metrics strong {
+  font-size: 18px;
+}
+
+.preview-progress {
+  margin-top: 14px;
+  padding: 13px;
+}
+
+/* efek klik/hover biar hidup */
+.modern-plot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.5), transparent 28%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.modern-plot.active::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  animation: activeSweep 2.2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes activeSweep {
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* biar isi plot tetap di atas sweep */
+.plot-head,
+.plant-area,
+.iot-node,
+.water-animation,
+.plot-mini-stats {
+  position: absolute;
+  z-index: 3;
+}
+
+.plot-head {
+  position: relative;
+}
+
+/* responsive */
+@media (max-width: 1200px) {
+  .smart-preview-content {
+    grid-template-columns: 1fr;
+  }
+
+  .farm-board {
+    transform: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .farm-board {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .modern-plot {
+    min-height: 145px;
+  }
+}
+
+/* ============================= */
+/* HOME FARM PREVIEW - FINAL RAPI */
+/* ============================= */
+
+.home-showcase {
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 26px;
+  align-items: stretch;
+}
+
+.smart-preview {
+  min-height: 420px !important;
+  padding: 22px !important;
+  border-radius: 34px !important;
+  background:
+    radial-gradient(circle at top right, rgba(132, 204, 22, 0.32), transparent 35%),
+    linear-gradient(135deg, #064e3b 0%, #15803d 58%, #84cc16 100%) !important;
+  overflow: hidden;
+}
+
+.smart-preview-top {
+  margin-bottom: 14px !important;
+  align-items: center;
+}
+
+.smart-preview-top span {
+  font-size: 12px !important;
+}
+
+.smart-preview-top h3 {
+  font-size: 22px !important;
+  margin-top: 4px !important;
+  line-height: 1.1;
+}
+
+.preview-live-badge {
+  padding: 8px 13px !important;
+  font-size: 13px !important;
+}
+
+/* layout utama dibuat lebih balance */
+.smart-preview-content {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 280px !important;
+  gap: 18px !important;
+  min-height: 320px !important;
+  align-items: stretch !important;
+}
+
+/* board kiri */
+.farm-board {
+  --mx: 0;
+  --my: 0;
+
+  min-height: 320px !important;
+  padding: 16px !important;
+  gap: 13px !important;
+  border-radius: 28px !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  overflow: hidden !important;
+
+  background:
+    radial-gradient(
+      circle at calc(50% + (var(--mx) * 16%)) calc(50% + (var(--my) * 16%)),
+      rgba(255, 255, 255, 0.22),
+      transparent 38%
+    ),
+    rgba(255, 255, 255, 0.14) !important;
+
+  transform:
+    perspective(900px)
+    rotateX(calc(var(--my) * -2.5deg))
+    rotateY(calc(var(--mx) * 2.5deg));
+
+  transition: transform 0.15s ease, background 0.2s ease !important;
+}
+
+/* petak */
+.modern-plot {
+  min-height: 135px !important;
+  padding: 13px !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.16) !important;
+}
+
+.modern-plot:hover {
+  transform: translateY(-4px) scale(1.01) !important;
+}
+
+.modern-plot.active {
+  outline: 3px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow:
+    0 0 0 5px rgba(220, 252, 231, 0.24),
+    0 22px 36px rgba(15, 23, 42, 0.22) !important;
+}
+
+/* header petak */
+.plot-head {
+  position: relative !important;
+  z-index: 6 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.plot-head strong {
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  max-width: 78px !important;
+  white-space: nowrap !important;
+  color: #064e3b !important;
+}
+
+.plot-head span {
+  font-size: 9px !important;
+  padding: 5px 7px !important;
+  border-radius: 999px !important;
+  flex-shrink: 0 !important;
+}
+
+/* tanaman dibuat lebih turun dan lebih kecil */
+.plant-area {
+  position: absolute !important;
+  left: 18px !important;
+  right: 72px !important;
+  bottom: 43px !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 4px 7px !important;
+  z-index: 3 !important;
+}
+
+.plant-blade {
+  width: 5px !important;
+  height: 20px !important;
+  margin: auto !important;
+  box-shadow:
+    6px 3px 0 rgba(22, 101, 52, 0.34),
+    -5px 5px 0 rgba(132, 204, 22, 0.42) !important;
+}
+
+/* sensor jangan nutup tanaman */
+.iot-node {
+  right: 17px !important;
+  bottom: 48px !important;
+  width: 32px !important;
+  height: 44px !important;
+  scale: 0.78 !important;
+  z-index: 5 !important;
+}
+
+.node-box {
+  width: 25px !important;
+  height: 19px !important;
+  border-radius: 8px !important;
+}
+
+.node-box::after {
+  height: 21px !important;
+}
+
+.signal-a {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.signal-b {
+  width: 31px !important;
+  height: 31px !important;
+}
+
+/* statistik bawah */
+.plot-mini-stats {
+  left: 13px !important;
+  right: 13px !important;
+  bottom: 10px !important;
+  z-index: 7 !important;
+}
+
+.plot-mini-stats span {
+  font-size: 10px !important;
+  padding: 5px 8px !important;
+  background: rgba(255, 255, 255, 0.86) !important;
+}
+
+/* air dibuat soft */
+.rain-line {
+  opacity: 0.18 !important;
+  height: 5px !important;
+}
+
+.rain-one {
+  width: 50% !important;
+  left: 25% !important;
+  top: 51% !important;
+}
+
+.rain-two {
+  display: none !important;
+}
+
+.water-animation {
+  right: 50px !important;
+  bottom: 30px !important;
+  scale: 0.72 !important;
+  opacity: 0.75 !important;
+}
+
+/* panel kanan dirapihin */
+.preview-info-panel {
+  min-height: 320px !important;
+  padding: 18px !important;
+  border-radius: 26px !important;
+  animation: none !important;
+  overflow: hidden !important;
+}
+
+.info-status {
+  font-size: 11px !important;
+  padding: 7px 10px !important;
+}
+
+.preview-info-panel h4 {
+  font-size: 23px !important;
+  margin: 13px 0 8px !important;
+  line-height: 1.1 !important;
+}
+
+.preview-info-panel p {
+  font-size: 12.5px !important;
+  line-height: 1.55 !important;
+}
+
+.info-metrics {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  margin-top: 14px !important;
+}
+
+.info-metrics div {
+  padding: 11px !important;
+  border-radius: 16px !important;
+}
+
+.info-metrics svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.info-metrics strong {
+  font-size: 17px !important;
+  margin-top: 5px !important;
+}
+
+.info-metrics span {
+  font-size: 11px !important;
+}
+
+.preview-progress {
+  margin-top: 13px !important;
+  padding: 12px !important;
+  border-radius: 16px !important;
+}
+
+.preview-progress > div:first-child {
+  font-size: 12px !important;
+}
+
+.progress-track {
+  height: 9px !important;
+}
+
+/* hapus efek sweep yang bikin keliatan rame */
+.modern-plot.active::before {
+  display: none !important;
+}
+
+/* glow halus saja */
+.modern-plot::after {
+  opacity: 0.32 !important;
+}
+
+/* responsive */
+@media (max-width: 1250px) {
+  .smart-preview-content {
+    grid-template-columns: 1fr !important;
+  }
+
+  .preview-info-panel {
+    min-height: auto !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .farm-board {
+    grid-template-columns: 1fr !important;
+  }
+
+  .modern-plot {
+    min-height: 130px !important;
+  }
+}
+
+/* HOME SYSTEM PREVIEW - INTERACTIVE FINAL */
+.home-system-preview {
+  --mx: 0;
+  --my: 0;
+
+  min-height: 430px;
+  padding: 26px;
+  border-radius: 34px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at calc(70% + (var(--mx) * 10%)) calc(20% + (var(--my) * 10%)),
+      rgba(187, 247, 208, 0.35),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #064e3b 0%, #15803d 55%, #84cc16 100%);
+  box-shadow: 0 28px 70px rgba(22, 101, 52, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  transform:
+    perspective(1000px)
+    rotateX(calc(var(--my) * -2deg))
+    rotateY(calc(var(--mx) * 2deg));
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.home-system-preview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.45;
+}
+
+.system-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(4px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.orb-one {
+  width: 170px;
+  height: 170px;
+  right: -55px;
+  top: -45px;
+  background: #bbf7d0;
+  animation: orbFloat 5s ease-in-out infinite;
+}
+
+.orb-two {
+  width: 130px;
+  height: 130px;
+  left: -35px;
+  bottom: -35px;
+  background: #84cc16;
+  animation: orbFloat 6s ease-in-out infinite reverse;
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(16px, -16px);
+  }
+}
+
+.system-preview-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.system-preview-top span {
+  color: #bbf7d0;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.system-preview-top h3 {
+  margin: 4px 0 0;
+  color: white;
+  font-size: 28px;
+  letter-spacing: -0.8px;
+}
+
+.system-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: #064e3b;
+  background: #dcfce7;
+  font-weight: 900;
+  white-space: nowrap;
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.14);
+}
+
+.system-status span {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+  animation: livePulse 1.4s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%,
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+
+  50% {
+    scale: 0.75;
+    opacity: 0.55;
+  }
+}
+
+.system-flow-area {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.flow-line {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 50%;
+  height: 5px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(220, 252, 231, 0.25);
+}
+
+.flow-line i {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(220, 252, 231, 1),
+    transparent
+  );
+  animation: flowSlide 1.7s linear infinite;
+}
+
+@keyframes flowSlide {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.flow-step {
+  position: relative;
+  z-index: 3;
+  min-height: 145px;
+  padding: 16px;
+  border: none;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #064e3b;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.14);
+  transition: 0.25s ease;
+  animation: flowStepIn 0.55s ease both;
+  overflow: hidden;
+}
+
+.flow-step::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 10%, rgba(34, 197, 94, 0.22), transparent 32%);
+  opacity: 0;
+  transition: 0.25s ease;
+}
+
+.flow-step:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 24px 45px rgba(15, 23, 42, 0.2);
+}
+
+.flow-step:hover::after {
+  opacity: 1;
+}
+
+.flow-step.active {
+  background: #ffffff;
+  outline: 4px solid rgba(187, 247, 208, 0.75);
+  box-shadow:
+    0 0 0 7px rgba(187, 247, 208, 0.22),
+    0 24px 45px rgba(15, 23, 42, 0.22);
+}
+
+@keyframes flowStepIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.flow-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+  background: #dcfce7;
+  color: #16a34a;
+  position: relative;
+  z-index: 2;
+}
+
+.flow-step.active .flow-icon {
+  background: linear-gradient(135deg, #16a34a, #84cc16);
+  color: white;
+  animation: iconBounce 1.6s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.flow-step strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 900;
+  position: relative;
+  z-index: 2;
+}
+
+.flow-step span {
+  display: block;
+  margin-top: 5px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+  position: relative;
+  z-index: 2;
+}
+
+.step-number {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  color: rgba(6, 78, 59, 0.16);
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.system-detail-card {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.14);
+  animation: detailPop 0.28s ease both;
+}
+
+@keyframes detailPop {
+  from {
+    transform: translateY(10px);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.detail-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.detail-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: linear-gradient(135deg, #064e3b, #16a34a);
+  box-shadow: 0 14px 28px rgba(22, 163, 74, 0.22);
+}
+
+.detail-main span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.detail-main h4 {
+  margin: 3px 0 0;
+  color: #064e3b;
+  font-size: 26px;
+  letter-spacing: -0.7px;
+}
+
+.system-detail-card p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.65;
+  font-size: 14px;
+}
+
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.detail-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: #f0fdf4;
+  color: #166534;
+  font-size: 12px;
+  font-weight: 900;
+  transition: 0.2s ease;
+}
+
+.detail-tags span:hover {
+  transform: translateY(-3px);
+  background: #dcfce7;
+}
+
+@media (max-width: 1100px) {
+  .system-flow-area {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .flow-line {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .system-preview-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .system-flow-area {
+    grid-template-columns: 1fr;
+  }
+}

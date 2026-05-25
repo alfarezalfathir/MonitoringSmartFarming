@@ -1,13 +1,11 @@
 import { NavLink } from "react-router-dom";
 import {
   Sprout,
-  Database,
   Settings,
   Home as HomeIcon,
   Info,
   LayoutDashboard,
   FileText,
-  BarChart3,
 } from "lucide-react";
 
 function Navbar() {
@@ -31,11 +29,6 @@ function Navbar() {
           Dashboard
         </NavLink>
 
-        <NavLink to="/data-sensor">
-          <Database size={16} />
-          Data Sensor
-        </NavLink>
-
         <NavLink to="/control">
           <Settings size={16} />
           Control Panel
@@ -44,11 +37,6 @@ function Navbar() {
         <NavLink to="/report">
           <FileText size={16} />
           Report
-        </NavLink>
-
-        <NavLink to="/comparison">
-          <BarChart3 size={16} />
-          Comparison
         </NavLink>
 
         <NavLink to="/about">

@@ -2,7 +2,7 @@
 
 <div align="center">
 
-**Sistem monitoring lahan pertanian berbasis IoT dengan visualisasi data real-time, model 3D interaktif, dan kontrol pompa otomatis.**
+**Sistem monitoring lahan pertanian berbasis IoT dengan visualisasi data real-time, model 3D interaktif, dan kontrol aktuator otomatis.**
 
 [![React](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
@@ -16,14 +16,14 @@
 
 ## 📖 Tentang Proyek
 
-**Smart Farming IoT Monitoring System** adalah aplikasi web full-stack yang dirancang untuk memantau kondisi lahan pertanian secara real-time. Sistem ini mensimulasikan penggunaan sensor IoT pada beberapa petak lahan pertanian, di mana data sensor (suhu, kelembaban tanah, kelembaban udara, intensitas cahaya, dan status pompa) disimpan di **Supabase** (cloud database), diproses melalui **backend Express.js**, dan divisualisasikan di **frontend React + Vite** dengan tampilan dashboard interaktif dan model 3D.
+**Smart Farming IoT Monitoring System** adalah aplikasi web full-stack yang dirancang untuk memantau kondisi lahan pertanian secara real-time. Sistem ini mensimulasikan penggunaan sensor IoT pada beberapa petak lahan pertanian, di mana data sensor (suhu, kelembaban tanah, kelembaban udara, intensitas cahaya) dan status perangkat (pompa, kipas, lampu, mode kontrol) disimpan di **Supabase** (cloud database), diproses melalui **backend Express.js**, dan divisualisasikan di **frontend React + Vite** dengan tampilan dashboard interaktif dan model 3D.
 
 ### 🎯 Tujuan Proyek
 
 - Memonitor kondisi lahan pertanian secara real-time melalui dashboard berbasis web
 - Menyediakan visualisasi data sensor dalam bentuk grafik, tabel, dan model 3D interaktif
 - Memberikan rekomendasi otomatis berdasarkan kondisi sensor (decision support)
-- Mengendalikan pompa irigasi secara remote melalui control panel
+- Mengendalikan aktuator (pompa irigasi, kipas ventilasi, lampu tanaman) secara remote dan otomatis
 - Menghasilkan laporan kondisi lahan untuk keperluan analisis
 
 ---
@@ -80,8 +80,8 @@ flowchart TD
     E --> E4["🚨 Alert & Rekomendasi"]
     E --> E5["🥧 Distribusi Status<br/>(Pie Chart)"]
     
-    F -->|Toggle Pompa| C
-    C -->|PUT /api/pump/:id| B
+    F -->|Toggle Perangkat| C
+    C -->|PUT /api/...| B
     B -->|Update Status| A
     
     style A fill:#22c55e,stroke:#16a34a,color:#fff
@@ -121,10 +121,10 @@ sequenceDiagram
         FE-->>User: Update tampilan
     end
 
-    Note over User,DB: 💧 Kontrol Pompa
-    User->>FE: Klik Toggle Pompa
-    FE->>BE: PUT /api/pump/:id
-    BE->>DB: UPDATE sensor_data SET pump_status
+    Note over User,DB: 💧 Kontrol Perangkat
+    User->>FE: Klik Toggle Perangkat
+    FE->>BE: PUT /api/[device]/:id
+    BE->>DB: UPDATE sensor_data SET [device]_status
     DB-->>BE: Return updated data
     BE-->>FE: Success response
     FE-->>User: Refresh tampilan
@@ -205,6 +205,9 @@ cd MonitoringSmartFarming
 | `humidity` | float8 | Kelembaban udara dalam % |
 | `light` | float8 | Intensitas cahaya dalam lux |
 | `pump_status` | text | Status pompa ("ON" / "OFF") |
+| `fan_status` | text | Status kipas ("ON" / "OFF") |
+| `lamp_status` | text | Status lampu ("ON" / "OFF") |
+| `control_mode` | text | Mode kontrol ("MANUAL" / "AUTO") |
 
 3. Isi dengan data dummy (contoh 8 petak lahan)
 
@@ -268,6 +271,10 @@ Buka browser dan akses: **http://localhost:5173**
 | `GET` | `/api/sensors` | Ambil semua data sensor |
 | `GET` | `/api/summary` | Ambil ringkasan dashboard (total petak, rata-rata, dll) |
 | `PUT` | `/api/pump/:id` | Update status pompa (ON/OFF) berdasarkan ID sensor |
+| `PUT` | `/api/fan/:id` | Update status kipas (ON/OFF) berdasarkan ID sensor |
+| `PUT` | `/api/lamp/:id` | Update status lampu (ON/OFF) berdasarkan ID sensor |
+| `PUT` | `/api/control-mode/:id` | Ubah mode kontrol perangkat (AUTO/MANUAL) |
+| `POST` | `/api/auto-control` | Menjalankan ulang logika kontrol otomatis |
 
 ### Contoh Response `/api/sensors`
 
@@ -280,7 +287,10 @@ Buka browser dan akses: **http://localhost:5173**
     "soil_moisture": 18,
     "humidity": 64,
     "light": 820,
-    "pump_status": "ON"
+    "pump_status": "ON",
+    "fan_status": "OFF",
+    "lamp_status": "OFF",
+    "control_mode": "MANUAL"
   }
 ]
 ```
@@ -293,6 +303,9 @@ Buka browser dan akses: **http://localhost:5173**
   "avgSoilMoisture": "45.6",
   "maxTemperature": 34,
   "activePump": 5,
+  "activeFan": 2,
+  "activeLamp": 1,
+  "autoModeArea": 4,
   "criticalArea": 4
 }
 ```
@@ -306,7 +319,7 @@ Buka browser dan akses: **http://localhost:5173**
 - Preview arsitektur teknologi yang digunakan
 
 ### 📈 Dashboard
-- **Summary Cards** — Total petak, rata-rata kelembaban, suhu tertinggi, pompa aktif, area kritis
+- **Summary Cards** — Total petak, rata-rata kelembaban, suhu tertinggi, perangkat aktif, area kritis
 - **Model 3D Interaktif** — Visualisasi lahan pertanian dengan Three.js (drag, zoom, klik petak)
 - **Alert Kondisi Lahan** — Peringatan untuk area yang membutuhkan perhatian
 - **Distribusi Status** — Pie chart status Normal / Waspada / Kritis
@@ -316,8 +329,9 @@ Buka browser dan akses: **http://localhost:5173**
 - **Auto Refresh** — Data diperbarui otomatis setiap 60 detik
 
 ### 🎮 Control Panel
-- Kontrol pompa irigasi untuk setiap petak lahan
-- Toggle ON/OFF pompa secara individual
+- Kontrol aktuator (pompa irigasi, kipas ventilasi, lampu tanaman)
+- Toggle ON/OFF perangkat secara individual
+- Pengaturan mode AUTO / MANUAL untuk setiap petak
 
 ### 📋 Report
 - Laporan ringkasan kondisi seluruh petak lahan

@@ -412,9 +412,13 @@ Pengujian ini mengukur selisih waktu antara saat data sensor dibuat atau dibaca 
 Latensi penyimpanan = storage_time - acquisition_time
 ```
 
-Pengujian menggunakan data dummy yang dibuat otomatis oleh script Node.js untuk mensimulasikan pembacaan sensor. Data dummy digunakan karena fokus pengujian adalah kecepatan penyimpanan data, bukan akurasi sensor fisik.
+Pengujian menggunakan data dummy yang dibuat otomatis oleh script Node.js untuk mensimulasikan pembacaan sensor. Fokus pengujian adalah mengukur kecepatan penyimpanan data ke database, bukan menguji akurasi sensor fisik.
 
-Rentang data dummy:
+#### Kenapa perlu membuat tabel baru?
+
+Tabel `sensor_latency_test` dibuat khusus untuk menampung data pengujian agar ratusan data dummy tidak masuk ke tabel utama `sensor_data`. Dengan begitu, data dashboard 8 petak tetap aman dan tampilan dashboard tidak terganggu.
+
+#### Rentang data dummy
 
 | Sensor | Rentang |
 |--------|---------|
@@ -422,6 +426,41 @@ Rentang data dummy:
 | Kelembaban tanah | 15–70% |
 | Kelembaban udara | 50–90% |
 | Intensitas cahaya | 200–1000 lux |
+
+#### Kode pembuatan data dummy
+
+Kode berikut berada pada file:
+
+```text
+backend/scripts/testLatency.js
+```
+
+```js
+function randomNumber(min, max) {
+  return Number((Math.random() * (max - min) + min).toFixed(2));
+}
+
+const dummySensor = {
+  test_batch: batchName,
+  sequence_number: index,
+  area: `Petak ${(index % 8) + 1}`,
+  temperature: randomNumber(24, 36),
+  soil_moisture: randomNumber(15, 70),
+  humidity: randomNumber(50, 90),
+  light: randomNumber(200, 1000),
+  acquisition_time: new Date().toISOString(),
+};
+```
+
+Penjelasan singkat:
+
+| Bagian kode | Fungsi |
+|-------------|--------|
+| `randomNumber(min, max)` | Membuat angka acak sesuai rentang sensor |
+| `test_batch` | Menandai kelompok pengujian agar hasil setiap percobaan tidak tercampur |
+| `sequence_number` | Memberi nomor urut pada setiap data |
+| `area` | Membagi data dummy ke Petak 1 sampai Petak 8 |
+| `acquisition_time` | Mencatat waktu saat data dummy dibuat |
 
 #### Buat tabel khusus pengujian
 
@@ -446,7 +485,49 @@ create index if not exists idx_sensor_latency_test_batch
 on sensor_latency_test(test_batch);
 ```
 
-Tabel `sensor_latency_test` dipisahkan dari tabel utama `sensor_data` agar data pengujian massal tidak mengganggu tampilan dashboard.
+Bagian penting:
+
+```sql
+storage_time timestamptz not null default clock_timestamp()
+```
+
+`storage_time` diisi otomatis oleh Supabase saat data berhasil masuk ke database. Nilai tersebut kemudian dibandingkan dengan `acquisition_time`.
+
+#### Kode penyimpanan data ke Supabase
+
+```js
+const { data, error } = await supabase
+  .from("sensor_latency_test")
+  .insert(dummySensor)
+  .select()
+  .single();
+```
+
+Penjelasan singkat:
+
+| Bagian kode | Fungsi |
+|-------------|--------|
+| `.from("sensor_latency_test")` | Memilih tabel khusus pengujian |
+| `.insert(dummySensor)` | Mengirim satu data dummy ke Supabase |
+| `.select().single()` | Mengambil kembali data yang baru tersimpan, termasuk `storage_time` |
+
+#### Kode menghitung latensi
+
+```js
+const acquisitionDate = new Date(data.acquisition_time);
+const storageDate = new Date(data.storage_time);
+
+const storageLatencyMs =
+  storageDate.getTime() - acquisitionDate.getTime();
+```
+
+Penjelasan singkat:
+
+| Bagian kode | Fungsi |
+|-------------|--------|
+| `new Date(...)` | Mengubah waktu dari database menjadi format tanggal JavaScript |
+| `.getTime()` | Mengubah waktu menjadi milidetik |
+| `storageDate - acquisitionDate` | Menghasilkan latensi penyimpanan dalam milidetik |
 
 #### Langkah pengujian
 
@@ -462,16 +543,23 @@ Tabel `sensor_latency_test` dipisahkan dari tabel utama `sensor_data` agar data 
    cd backend
    ```
 
-3. Jalankan pengujian pertama dengan 100 data dummy:
+3. Jalankan pengujian pertama, misalnya dengan 100 data dummy:
 
    ```bash
    node scripts/testLatency.js 100
    ```
 
-4. Jalankan pengujian kedua dengan 500 data dummy:
+4. Jalankan pengujian kedua dengan jumlah berbeda, misalnya 500 data dummy:
 
    ```bash
    node scripts/testLatency.js 500
+   ```
+
+   Angka terakhir dapat diganti sesuai jumlah data yang ingin diuji. Contoh:
+
+   ```bash
+   node scripts/testLatency.js 10
+   node scripts/testLatency.js 50
    ```
 
 5. Buka tabel `sensor_latency_test` pada Supabase untuk melihat data yang tersimpan.
@@ -492,12 +580,11 @@ Dari total 600 data dummy yang dikirim, seluruh data berhasil tersimpan dengan t
 
 #### Perbedaan data dummy dan data IoT asli
 
-| Aspek | Data dummy | Data IoT asli |
-|-------|------------|---------------|
-| Sumber data | Dibuat otomatis oleh script Node.js | Dibaca oleh sensor fisik dan mikrokontroler seperti ESP32 |
-| Nilai data | Angka acak pada rentang tertentu | Nilai hasil pembacaan kondisi lingkungan |
-| Faktor tambahan | Koneksi laptop ke Supabase | Sensor, mikrokontroler, Wi-Fi, backend, dan Supabase |
-| Fokus pengujian | Kecepatan penyimpanan database | Kinerja sistem IoT secara menyeluruh dan akurasi sensor |
+| Data dummy | Data IoT asli |
+|------------|---------------|
+| Dibuat otomatis oleh script Node.js menggunakan angka acak | Dibaca langsung oleh sensor fisik, lalu dikirim oleh mikrokontroler seperti ESP32 |
+| Cocok untuk menguji kecepatan penyimpanan database | Cocok untuk menguji sistem secara menyeluruh, termasuk sensor, ESP32, Wi-Fi, dan database |
+| Belum menguji akurasi alat atau delay dari perangkat fisik | Dapat menunjukkan kondisi nyata di lapangan dan delay tambahan dari perangkat IoT |
 
 ---
 

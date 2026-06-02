@@ -444,10 +444,10 @@ const dummySensor = {
   test_batch: batchName,
   sequence_number: index,
   area: `Petak ${(index % 8) + 1}`,
-  temperature: randomNumber(24, 36),
-  soil_moisture: randomNumber(15, 70),
-  humidity: randomNumber(50, 90),
-  light: randomNumber(200, 1000),
+  temperature: randomNumber(24, 36), // ini angka random dari 20C - 36C
+  soil_moisture: randomNumber(15, 70), // random angka 
+  humidity: randomNumber(50, 90), // random angka
+  light: randomNumber(200, 1000), // random angka
   acquisition_time: new Date().toISOString(),
 };
 ```
@@ -543,13 +543,13 @@ Penjelasan singkat:
    cd backend
    ```
 
-3. Jalankan pengujian pertama, misalnya dengan 100 data dummy:
+3. Jalankan pengujian pertama, misalnya dengan 100 data dummy: ( kalo mau 10 data dummy untuk pengujian ini, 100 nya ganti jadi 10 )
 
    ```bash
    node scripts/testLatency.js 100
    ```
 
-4. Jalankan pengujian kedua dengan jumlah berbeda, misalnya 500 data dummy:
+4. Jalankan pengujian kedua dengan jumlah berbeda, misalnya 500 data dummy: ( miisal kamu mau buat pengujian kedua, dtanya misal 50 ganti 500 nya jadi 50 )
 
    ```bash
    node scripts/testLatency.js 500
